@@ -1,0 +1,29 @@
+#Create
+1.db.collection.insertOne()
+2.db.collection.insertMany()
+db.users.insertOne({key:"value"});
+
+#Read
+1.db.collection.find()
+db.users.find({age: {$gt: 18}},{name:1, address:1}).limit(5)
+{quantity:{$eq:28}}
+
+#Update
+1.db.collection.updateOne()
+2.db.collection.updateMany()
+3.db.collection.replaceOne()
+db.users.upateMany({age:{$lt:18}},{$set:{status:"reject"}})
+
+#Delete
+1.db.collection.deleteOne()
+2.db.collection.deleteMany()
+db.users.deleteMany({status: "reject"})
+
+#Aggregate
+db.groceryitems.aggregate(
+  { $filter : { category : { $eq : "spices" } } }
+);
+db.orders.aggregate(
+$match stage {$match: {status:"A"}},
+$group stage {$group: {_id:"$unique_id_column",total: {$sum: "$amount"}}}]
+)
